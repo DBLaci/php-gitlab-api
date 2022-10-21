@@ -546,15 +546,15 @@ class Projects extends AbstractApi
 
     /**
      * @param int|string $project_id
-     * @param int        $user_id
+     * @param int|string $user_id
      * @param int        $access_level
      *
      * @return mixed
      */
-    public function addMember($project_id, int $user_id, int $access_level)
+    public function addMember($project_id, $user_id, int $access_level)
     {
         return $this->post($this->getProjectPath($project_id, 'members'), [
-            'user_id' => $user_id,
+            'user_id' => (string) $user_id,
             'access_level' => $access_level,
         ]);
     }
